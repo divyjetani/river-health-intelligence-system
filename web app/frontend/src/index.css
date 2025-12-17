@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* src/styles/colors.css */
+
+:root {
+  --primary-bg-light: #f7fafc;
+  --primary-text-light: #2d3748;
+  --primary-btn-light: #3490dc; 
+  --primary-btn-hover-light: #2779bd;
+  
+  --gradient-light: linear-gradient(135deg, #5faaff, #7be4fe); 
+
+  --secondary-bg-light: #edf2f7;
+  --secondary-text-light: #4a5568;
+}
+
+[data-theme="dark"] {
+  --primary-bg-dark: #2d3748; 
+  --primary-text-dark: #f7fafc; 
+  --primary-btn-dark: #38b2ac; 
+  --primary-btn-hover-dark: #319795;
+  --gradient-dark: linear-gradient(135deg, #232526, #414345); 
+  
+  --secondary-bg-dark: #4a5568; 
+  --secondary-text-dark: #e2e8f0;
+}
+
+body {
+  background-color: var(--primary-bg-light); 
+  color: var(--primary-text-light); 
+  background: var(--gradient-light);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--primary-bg-dark);
+  color: var(--primary-text-dark);
+  background: var(--gradient-dark);
+}
+
+button {
+  background-color: var(--primary-btn-light);
+  color: white;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="dark"] button {
+  background-color: var(--primary-btn-dark);
+}
+
+button:hover {
+  background-color: var(--primary-btn-hover-light);
+}
+
+[data-theme="dark"] button:hover {
+  background-color: var(--primary-btn-hover-dark);
+}
+
+/* .container {
+  background-color: var(--secondary-bg-light);
+  color: var(--secondary-text-light);
+  padding: 2rem;
+  border-radius: 8px;
+} */
+
+/* [data-theme="dark"] .container {
+  background-color: var(--secondary-bg-dark);
+  color: var(--secondary-text-dark);
+} */

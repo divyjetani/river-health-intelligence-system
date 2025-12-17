@@ -1,0 +1,172 @@
+Pages:
+
+Home Page:
+
+Overview of the project and how it works.
+
+Navigation to different sections (e.g., Data Upload, Real-time Monitoring, Reports).
+
+Real-Time Pollution Monitoring:
+
+Display real-time results from drones, CCTV, or user-uploaded images/videos.
+
+Show pollution detection results: detected pollutants (plastic, foam, discoloration).
+
+Live stream or uploaded video processing (with detected pollutants highlighted).
+
+Pollution Heatmap showing the geographical spread.
+
+River Health Score Page:
+
+Display the River Health Score (a score between 0-100).
+
+Score Explanation: Show why the river health score is as it is (AI-based, visualized with the help of overlays).
+
+Show Predictive Alerts based on trends, weather, and historical data.
+
+Geographic Pollution Map:
+
+Display the geographic pollution hotspots based on image/video data.
+
+Show heatmaps for pollution zones, indicating:
+
+Clean zones
+
+Moderately polluted zones
+
+Red-alert zones (dangerous zones).
+
+Pollutant Identification Layer: Show detected pollutants with boundaries and labels.
+
+AI Explainability and Results:
+
+Display the explainable AI layer, showing why certain areas are flagged (show detected pollutants and give context).
+
+Use visual overlays to highlight detected pollutants and areas flagged as red-alert zones.
+
+Upload Data:
+
+Allow users to upload images, videos, or datasets for pollution detection.
+
+Processing Indicator to show the system is analyzing the data.
+
+Reports & Alerts:
+
+Display historical pollution trends, predictive alerts, and forecasts.
+
+Show graphs/charts for pollution over time.
+
+Provide detailed insights and recommendations for action based on the data.
+
+2. Components for Each Page
+Home Page:
+
+Hero Section: An introductory section explaining the AI-powered river health system.
+
+Navigation Bar: Links to the main pages (Real-Time Monitoring, River Health Score, Geographic Map, Upload).
+
+Feature Overview: Brief summary of key features with icons or images.
+
+About Section: Additional information about how the system works (with links to research papers, case studies, or technology stack).
+
+Real-Time Pollution Monitoring:
+
+Video Player Component:
+
+Display a live video feed or uploaded video.
+
+Use a library like react-player to embed video playback.
+
+Overlay detected pollutants in real-time using markers or highlights (Canvas overlay).
+
+Pollution Detection Result:
+
+Display detected pollutants (plastic, foam, discoloration).
+
+Use React Tooltip for information popups explaining each detected pollutant.
+
+Pollution Heatmap:
+
+Heatmap Component showing pollution intensity across the geographical area.
+
+Use libraries like Leaflet.js or Google Maps API for the map.
+
+Overlay heatmap data on top of the map with colored zones.
+
+River Health Score Page:
+
+Score Card:
+
+Show the River Health Score (0-100).
+
+Display the score in a visually appealing way (e.g., progress bars, circular gauges, or numbers).
+
+Use react-circular-progressbar or react-gauge-chart for visual representation.
+
+Explanation Section:
+
+Show why the score is what it is (could be based on pollution levels, weather, etc.).
+
+AI Overlay showing detected pollutants on images/videos and how they affect the score.
+
+Predictive Alerts Section:
+
+Show future pollution risks based on visual data trends and weather data.
+
+Display a list of alerts or notifications based on detected patterns.
+
+Geographic Pollution Map:
+
+Map Component:
+
+Use Leaflet.js or Google Maps API to display the geographic map.
+
+Display different types of zones: Clean, Moderate, Red-alert.
+
+Overlay pollution hotspots based on detected data from videos or images.
+
+Interactive map where users can zoom in/out and click on areas for detailed information.
+
+Heatmap Overlay:
+
+Show areas with higher pollution intensity.
+
+Use Leaflet's Heatmap plugin to overlay pollution density.
+
+AI Explainability Layer:
+
+Explainable AI Overlay:
+
+Show areas on the map or in the video frame where pollutants were detected.
+
+Use TensorFlow.js or ONNX.js (if the model can run in the browser) to explain why the AI flagged certain areas.
+
+Display bounding boxes around detected pollutants in images/videos, with labels (plastic, foam, etc.).
+
+Use a tooltip or modal to show detailed AI reasoning.
+
+Upload Data Page:
+
+File Upload Component:
+
+Use react-dropzone for file drag-and-drop functionality.
+
+Allow users to upload images, videos, or other datasets.
+
+Show a Processing Indicator while the system analyzes the data.
+
+Progress Bar:
+
+Indicate progress during the analysis phase.
+
+Reports & Alerts Page:
+
+Pollution Trend Graphs:
+
+Use charting libraries like Chart.js or Recharts to display pollution trends over time.
+
+Show line charts, bar graphs, or pie charts for various pollution types and river health scores.
+
+Alert Section:
+
+Display real-time alerts for upcoming risks or dangerous zones (using cards or a notification system).
