@@ -52,7 +52,7 @@ export default function AlertPanel() {
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold text-slate-900">Predictive Alerts</h3>
         <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
-          <Bell className="w-5 h-5 text-slate-600" />
+          <Bell className="w-5 h-5 text-white" />
         </button>
       </div>
 

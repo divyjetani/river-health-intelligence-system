@@ -1,4 +1,5 @@
 import { MapPin, Navigation } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function PollutionMap() {
   const zones = [
@@ -24,10 +25,12 @@ export default function PollutionMap() {
     <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-slate-900">Geographic Pollution Map</h2>
+        <Link to="/dashboard/geographicmap">
         <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium">
           <Navigation className="w-4 h-4" />
           <span>Full Map View</span>
         </button>
+        </Link>
       </div>
 
       <div className="relative bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl h-96 overflow-hidden">

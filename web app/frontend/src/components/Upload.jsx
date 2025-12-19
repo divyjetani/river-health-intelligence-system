@@ -28,7 +28,7 @@ export default function Upload() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <button
             onClick={() => setUploadType('image')}
-            className={`p-6 rounded-2xl border-2 transition-all ${
+            className={`p-6 rounded-2xl border transition-all bg-gradient-to-br from-blue-100 to-cyan-100 border border-slate-300 hover:from-blue-200 hover:to-cyan-200 ${
               uploadType === 'image'
                 ? 'border-blue-500 bg-blue-50'
                 : 'border-slate-200 bg-white hover:border-slate-300'
@@ -41,7 +41,7 @@ export default function Upload() {
 
           <button
             onClick={() => setUploadType('video')}
-            className={`p-6 rounded-2xl border-2 transition-all ${
+            className={`p-6 rounded-2xl border transition-all bg-gradient-to-br from-blue-100 to-cyan-100 border border-slate-300 hover:from-blue-200 hover:to-cyan-200 ${
               uploadType === 'video'
                 ? 'border-blue-500 bg-blue-50'
                 : 'border-slate-200 bg-white hover:border-slate-300'

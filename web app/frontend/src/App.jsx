@@ -1,31 +1,35 @@
-import { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Dashboard from './components/Dashboard';
-import Features from './components/Features';
-import Upload from './components/Upload';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import DashboardPage from './pages/Dashboard';
+import UploadPage from './pages/Upload';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import NotFound from './pages/NotFound';
+import GeographicMap from './pages/GeographicMap';
 
-function App() {
-  const [currentView, setCurrentView] = useState('home');
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <Header currentView={currentView} onNavigate={setCurrentView} />
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
+        <Header />
 
-      {currentView === 'home' && (
-        <>
-          <Hero onGetStarted={() => setCurrentView('dashboard')} />
-          <Features />
-        </>
-      )}
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/upload" element={<UploadPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard/geographicmap" element={<GeographicMap />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
 
-      {currentView === 'dashboard' && <Dashboard />}
-      {currentView === 'upload' && <Upload />}
-
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
-}
-
-export default App;
+} 

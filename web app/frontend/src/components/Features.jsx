@@ -41,7 +41,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900">
@@ -71,26 +71,26 @@ export default function Features() {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-3xl p-12 text-center text-white shadow-2xl">
+        <div className="mt-16 bg-gradient-to-r from-blue-300 to-cyan-300 bg-opacity-30 rounded-3xl p-12 text-center text-black shadow-2xl">
           <h3 className="text-3xl font-bold mb-4">
             Detecting Visible Pollutants
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
               <p className="font-semibold text-lg">Plastic Waste</p>
-              <p className="text-blue-100 text-sm mt-2">Bags, bottles, Styrofoam</p>
+              <p className="text-slate-600 text-sm mt-2">Bags, bottles, Styrofoam</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
               <p className="font-semibold text-lg">Toxic Foam</p>
-              <p className="text-blue-100 text-sm mt-2">Chemical accumulation</p>
+              <p className="text-slate-600 text-sm mt-2">Chemical accumulation</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
               <p className="font-semibold text-lg">Water Discoloration</p>
-              <p className="text-blue-100 text-sm mt-2">Black, green, oily layers</p>
+              <p className="text-slate-600 text-sm mt-2">Black, green, oily layers</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-white/20">
               <p className="font-semibold text-lg">Debris Clusters</p>
-              <p className="text-blue-100 text-sm mt-2">Sedimentation analysis</p>
+              <p className="text-slate-600 text-sm mt-2">Sedimentation analysis</p>
             </div>
           </div>
         </div>
