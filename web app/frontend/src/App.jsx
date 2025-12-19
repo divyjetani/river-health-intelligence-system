@@ -1,32 +1,35 @@
-// src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
-import RealTimeMonitoring from './pages/RealTimeMonitoring';
-import RiverHealthScore from './pages/RiverHealthScore';
-import GeographicMap from './pages/GeographicMap';
-import Upload from './pages/Upload';
-import AdminPanel from './pages/AdminPanel';
+import DashboardPage from './pages/Dashboard';
+import UploadPage from './pages/Upload';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import GeographicMap from './pages/GeographicMap';
 
-const App = () => {
+export default function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/real-time-monitoring" element={<RealTimeMonitoring />} />
-        <Route path="/river-health-score" element={<RiverHealthScore />} />
-        <Route path="/geographic-map" element={<GeographicMap />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
+        <Header />
+
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/upload" element={<UploadPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard/geographicmap" element={<GeographicMap />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </Router>
   );
-};
-
-export default App;
+} 
