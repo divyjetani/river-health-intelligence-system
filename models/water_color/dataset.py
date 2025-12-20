@@ -4,6 +4,7 @@ import pandas as pd
 from PIL import Image
 from torch.utils.data import Dataset
 from torchvision import transforms
+import torch
 
 class WaterDataset(Dataset):
     def __init__(self, csv_file, img_dir):
@@ -37,8 +38,11 @@ class WaterDataset(Dataset):
             self.data.iloc[idx, 0]
         )
         image = Image.open(img_path).convert("RGB")
-        turbidity = self.data.iloc[idx, 1]
+        # apply transforms (resize, augment, normalize)
+        torch_img = self.transform(image)  # (3,H,W), normalized to ImageNet means
+        # compute color stats here or in model (faster done in model if GPU)
+        discolor_label = int(self.data.iloc[idx]['discolor_label'])
+        turbidity = float(self.data.iloc[idx]['turbidity_NTU'])
+        aux = torch.tensor([...], dtype=torch.float32)  # optional metadata
 
-        image = self.transform(image)
-
-        return image, float(turbidity)
+        return torch_img, turbidity, discolor_label, aux

@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Team Cosmix
+                NADiQ
               </span>
             </div>
             <p className="text-slate-600 text-sm">
@@ -32,8 +32,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-600">
               <li><a href="#" className="hover:text-blue-600 transition-colors">Features</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Dashboard</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">API Access</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Pricing</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Heatmaps</a></li>
             </ul>
           </div>
 
@@ -42,18 +41,18 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-slate-600">
               <li><a href="#" className="hover:text-blue-600 transition-colors">Documentation</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Research Papers</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Community</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Certifications</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-slate-900 mb-4">Company</h4>
+            <h4 className="font-bold text-slate-900 mb-4">Team</h4>
             <ul className="space-y-2 text-sm text-slate-600">
-              <li><a href="#" className="hover:text-blue-600 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Divy</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Krishna</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Jenil</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Tvisha</a></li>
+              <li><a href="#" className="hover:text-blue-600 transition-colors">Divyanshu</a></li>
             </ul>
           </div>
         </div>

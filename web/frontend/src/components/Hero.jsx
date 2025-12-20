@@ -67,9 +67,9 @@ export default function Hero() {
           <div className="relative">
             <div className="relative bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl p-8 shadow-2xl">
               <img
-                src="https://images.pexels.com/photos/2386678/pexels-photo-2386678.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src="hero-img.png"
                 alt="River monitoring"
-                className="rounded-xl w-full h-auto shadow-lg"
+                className="rounded-xl w-full h-full shadow-lg"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
                 <div className="flex items-center space-x-3">

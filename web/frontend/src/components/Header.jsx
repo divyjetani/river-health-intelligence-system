@@ -10,9 +10,10 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <NavLink to="/" className="flex items-center space-x-3 group">
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+            {/* <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
               Team Cosmix
-            </span>
+            </span> */}
+            <img src="nadiq.png" alt="NADiQ" className='w-32' />
           </NavLink>
 
           <nav className="flex items-center space-x-1">
