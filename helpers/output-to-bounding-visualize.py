@@ -3,7 +3,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 # Path to your image and JSON file
-image_path = 'C:\\Users\\divyj\\Desktop\\hackathons\\hackVeda iilm\\model my\\data\\test.jpg'  # Replace with your image path
+image_path = 'C:/Users/divyj/Desktop/hackathons/hackVeda iilm/data/underwater_garbage/images/test/1bc7-iudfmpmn7245599_jpg.rf.c753c3518aa3bd30463da5e4b94a48be.jpg'  # Replace with your image path
 json_path = 'C:\\Users\\divyj\\Desktop\\hackathons\\hackVeda iilm\\model my\\data\\a.json' 
 
 # Load the image

@@ -1,0 +1,22 @@
+train: C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/trash_detection/models/trash_detection/datasets/train.txt
+val: C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/trash_detection/models/trash_detection/datasets/val.txt
+test: C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/trash_detection/models/trash_detection/datasets/test.txt
+nc: 17
+names:
+- Mask
+- can
+- cellphone
+- electronics
+- gbottle
+- glove
+- metal
+- misc
+- net
+- pbag
+- pbottle
+- plastic
+- rod
+- sunglasses
+- tire
+- algae
+- plastic_bottle

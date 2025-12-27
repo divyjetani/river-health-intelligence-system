@@ -1,0 +1,32 @@
+# data/data.yaml
+# Root paths are relative to where you run training from.
+train: ./images/train
+val: ./images/val
+test: ./images/test
+
+nc: 15
+names:
+  0: Mask
+  1: can
+  2: cellphone
+  3: electronics
+  4: gbottle
+  5: glove
+  6: metal
+  7: misc
+  8: net
+  9: pbag
+  10: pbottle
+  11: plastic
+  12: rod
+  13: sunglasses
+  14: tire
+  15: algae
+  16: plastic_bottle
+
+roboflow:
+  workspace: object-detect-dmjpt
+  project: ocean_waste
+  version: 1
+  license: "CC BY 4.0"
+  url: "https://universe.roboflow.com/object-detect-dmjpt/ocean_waste/dataset/1"
