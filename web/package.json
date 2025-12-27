@@ -6,6 +6,6 @@
   "scripts": {
     "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
     "start-frontend": "cd frontend  && npm start",   
-    "start-backend": "cd backend && npm start"
+    "start-backend": "cd backend && .venv/Scripts/activate && python \"api/main.py\""
   }
 }

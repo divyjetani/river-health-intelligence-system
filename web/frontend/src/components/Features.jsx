@@ -2,12 +2,6 @@ import { Eye, ChartBar, MapPin, TrendingUp, Brain, AlertCircle } from 'lucide-re
 
 const features = [
   {
-    icon: Eye,
-    title: 'Real-Time Pollution Detection',
-    description: 'Automatically identifies floating waste, toxic foam, abnormal water color, and debris clusters from visual data.',
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
     icon: ChartBar,
     title: 'River Health Score',
     description: 'AI-powered scoring system (0-100) based on water color metrics, pollution density, foam detection, and flow analysis.',
@@ -25,18 +19,6 @@ const features = [
     description: 'Forecast pollution risks using weather data, historical patterns, and visual trends to prevent environmental disasters.',
     color: 'from-emerald-500 to-emerald-600',
   },
-  {
-    icon: Brain,
-    title: 'Explainable AI',
-    description: 'Visual overlays and heatmaps showing exactly where pollutants were detected and why the model flagged specific areas.',
-    color: 'from-green-500 to-green-600',
-  },
-  {
-    icon: AlertCircle,
-    title: 'Multi-Source Integration',
-    description: 'Analyzes data from drones, CCTV cameras, satellite imagery, and community photo uploads for comprehensive coverage.',
-    color: 'from-lime-500 to-lime-600',
-  },
 ];
 
 export default function Features() {
@@ -48,7 +30,7 @@ export default function Features() {
             Intelligent Features
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive AI-driven system for continuous river health monitoring and pollution prevention
+            Comprehensive ML-driven system for river health monitoring and pollution prevention
           </p>
         </div>
 
@@ -71,7 +53,7 @@ export default function Features() {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-blue-300 to-cyan-300 bg-opacity-30 rounded-3xl p-12 text-center text-black shadow-2xl">
+        <div className="mt-16 bg-gradient-to-r from-blue-200 to-cyan-200 bg-opacity-30 rounded-3xl p-8 text-center text-black shadow border-blue-300 border">
           <h3 className="text-3xl font-bold mb-4">
             Detecting Visible Pollutants
           </h3>

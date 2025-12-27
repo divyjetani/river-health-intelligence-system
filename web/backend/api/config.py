@@ -1,9 +1,14 @@
 import os
 
 # Change these paths to point at your trained weights on disk
-WATER_MODEL_PATH = os.environ.get("WATER_MODEL_PATH", "C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/water_color_prediction/water_quality_mobilenet.keras")
+# Model 1: water color classification (Keras MobileNet file)
+WATER_MODEL_PATH = os.environ.get("WATER_MODEL_PATH", "C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/model 1/water_quality_mobilenet.keras")
 
-TRASH_MODEL_PATH = os.environ.get("TRASH_MODEL_PATH", "C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/trash_detection/runs/best.pt")
+# Model 2: trash detection (Ultralytics/YOLO weights)
+TRASH_MODEL_PATH = os.environ.get("TRASH_MODEL_PATH", "C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/model 2/runs/weights/best.pt")
+
+# Model 3 
+DATA_MODEL_PATH = os.environ.get("DATA_MODEL_PATH", "C:/Users/divyj/Desktop/hackathons/hackVeda iilm/models/model 3/predict.py")
 
 WATER_CLASS_NAMES = ['brown_muddy_water', 
     'clean blue lake water texture', 
@@ -11,7 +16,7 @@ WATER_CLASS_NAMES = ['brown_muddy_water',
     'dark_black_water', 
     'foam_froth', 
     'green_algae_water'
-    ]
+]
 
 # CORS
 ALLOWED_ORIGINS = ["*"]

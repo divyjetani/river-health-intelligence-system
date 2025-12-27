@@ -6,12 +6,12 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
-            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+            {/* <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
               <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
               <span>Clean Energy & Sustainability</span>
-            </div>
+            </div> */}
 
             <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
               Real-Time River
@@ -65,18 +65,18 @@ export default function Hero() {
           </div>
 
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl p-8 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-blue-200 to-cyan-200 rounded-xl p-2 shadow-2xl">
               <img
                 src="hero-img.png"
                 alt="River monitoring"
                 className="rounded-xl w-full h-full shadow-lg"
               />
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
+              {/* <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl">
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="font-semibold text-slate-700">Live Monitoring Active</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

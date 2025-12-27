@@ -59,7 +59,10 @@ export default function Footer() {
 
         <div className="border-t border-slate-200 mt-8 pt-8 text-center">
           <p className="text-sm text-slate-600">
-            2024 Team Cosmix. Clean Energy & Sustainability Initiative.
+            Created By Team Cosmix with ❤️ 
+          </p>
+          <p className="text-sm text-slate-600">
+            ➖Clean Energy and Sustainibility 🌳
           </p>
         </div>
       </div>
