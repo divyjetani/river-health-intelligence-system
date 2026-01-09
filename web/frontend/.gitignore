@@ -23,4 +23,17 @@ dist-ssr
 *.sln
 *.sw?
 
+# Node
+node_modules/
 dist/
+build/
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python virtual env
+.venv/
