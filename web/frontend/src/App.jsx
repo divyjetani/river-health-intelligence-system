@@ -12,7 +12,7 @@ import GeographicMap from './pages/GeographicMap';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/river-health-intelligence-system">
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
         <Header />
 
