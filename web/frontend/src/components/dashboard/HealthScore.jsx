@@ -21,7 +21,7 @@ export default function HealthScore() {
     <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-slate-900">River Health Score</h2>
-        <div className="flex items-center space-x-2 text-sm">
+        {/* <div className="flex items-center space-x-2 text-sm">
           {change < 0 ? (
             <span className="text-red-600 font-semibold flex items-center">
               <TrendingDown className="w-4 h-4 mr-1" />
@@ -30,7 +30,7 @@ export default function HealthScore() {
           ) : (
             <span className="text-green-600 font-semibold">+{change} points</span>
           )}
-        </div>
+        </div> */}
       </div>
 
       <div className="flex items-center justify-center mb-8">

@@ -33,14 +33,6 @@ for fname in MODEL_FILES:
 
 
 def predict_stat(rainfall_mm: float, discharge: float, water_level: float, month: int = 0):
-    """Return dict with pollution_score 0-100 and optional fields.
-
-    If a model is available, an attempt is made to call it. If it returns
-    a numeric value, we map it to 0-100 by clipping. If it returns a dict
-    we forward it (ensuring 'pollution_score' exists). Otherwise fall back
-    to a heuristic.
-    """
-    # Try to use model if available
     if _model is not None:
         try:
             features = [[float(rainfall_mm), float(discharge), float(water_level), int(month)]]

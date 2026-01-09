@@ -22,8 +22,7 @@ export default function Hero() {
 
             <p className="text-xl text-slate-600 leading-relaxed">
               AI-powered computer vision system that automatically detects pollution,
-              analyzes water quality, and forecasts environmental risks using drone footage,
-              CCTV streams, and community uploads.
+              analyzes water quality, and forecasts environmental risks.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -31,7 +30,7 @@ export default function Hero() {
                 onClick={() => navigate('/dashboard')}
                 className="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all"
               >
-                <span>View Live Dashboard</span>
+                <span>View Dashboard</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button className="inline-flex items-center justify-center space-x-2 bg-white text-slate-700 px-8 py-4 rounded-xl font-semibold border-2 border-slate-200 hover:border-blue-300 hover:bg-slate-50 transition-all">

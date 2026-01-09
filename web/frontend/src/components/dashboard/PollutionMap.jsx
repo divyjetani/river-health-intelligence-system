@@ -24,7 +24,7 @@ export default function PollutionMap() {
   return (
     <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-900">Geographic Pollution Map</h2>
+        <h2 className="text-2xl font-bold text-slate-900">Heat Map</h2>
         <Link to="/dashboard/geographicmap">
         <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium">
           <Navigation className="w-4 h-4" />

@@ -2,7 +2,7 @@ import { Twitter, Github, Linkedin, Droplet } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-blue-100/50 to-cyan-100/50 border-t border-slate-200 mt-20">
+    <footer className="bg-gradient-to-r from-blue-100/50 to-cyan-100/50 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">

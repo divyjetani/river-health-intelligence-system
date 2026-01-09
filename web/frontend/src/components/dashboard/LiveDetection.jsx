@@ -3,19 +3,19 @@ import { Camera, CheckCircle2 } from 'lucide-react';
 export default function LiveDetection() {
   const detections = [
     { type: 'Plastic Bottles', count: 23, confidence: 94, color: 'bg-red-500' },
-    { type: 'Foam Accumulation', count: 8, confidence: 89, color: 'bg-amber-500' },
-    { type: 'Debris Clusters', count: 15, confidence: 91, color: 'bg-orange-500' },
-    { type: 'Discoloration', count: 3, confidence: 87, color: 'bg-yellow-500' },
+    { type: 'Gloves', count: 8, confidence: 89, color: 'bg-amber-500' },
+    { type: 'Mobiles', count: 15, confidence: 91, color: 'bg-orange-500' },
+    { type: 'Net', count: 3, confidence: 87, color: 'bg-yellow-500' },
   ];
 
   return (
     <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-slate-900">Live Detection</h3>
-        <div className="flex items-center space-x-2">
+        <h3 className="text-xl font-bold text-slate-900">Trash Detection</h3>
+        {/* <div className="flex items-center space-x-2">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
           <span className="text-sm text-slate-600">Active</span>
-        </div>
+        </div> */}
       </div>
 
       <div className="bg-slate-900 rounded-xl overflow-hidden mb-6 relative">
@@ -24,13 +24,13 @@ export default function LiveDetection() {
           alt="River monitoring feed"
           className="w-full h-48 object-cover"
         />
-        <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
+        {/* <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
           <Camera className="w-3 h-3" />
           <span>LIVE</span>
-        </div>
-        <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded">
+        </div> */}
+        {/* <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded">
           Camera ID: RV-2024-A1
-        </div>
+        </div> */}
       </div>
 
       <div className="space-y-3">
@@ -65,10 +65,10 @@ export default function LiveDetection() {
           <span className="text-slate-600">Total Objects</span>
           <span className="font-bold text-slate-900">49 detected</span>
         </div>
-        <div className="flex items-center justify-between text-sm mt-2">
+        {/* <div className="flex items-center justify-between text-sm mt-2">
           <span className="text-slate-600">Last Updated</span>
           <span className="font-medium text-slate-700">2 seconds ago</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

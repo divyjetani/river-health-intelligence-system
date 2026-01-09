@@ -12,3 +12,4 @@ web/node_modules/
 web/frontend/node_modules/
 web/backend/.venv/
 data/algae/
+data/

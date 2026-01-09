@@ -42,28 +42,22 @@ val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 print("🏗️ Building MobileNetV2 Model...")
 
 # Load pre-trained base model (without the top "head")
-base_model = MobileNetV2(input_shape=IMG_SIZE + (3,),
-                         include_top=False,
-                         weights='imagenet')
+base_model = MobileNetV2(input_shape=IMG_SIZE + (3,), include_top=False, weights='imagenet')
 
-# Freeze the base model (so we don't ruin its pre-learned knowledge)
 base_model.trainable = False
 
-# Add new layers on top for YOUR classes
 model = models.Sequential([
-    layers.Rescaling(1./127.5, offset=-1, input_shape=IMG_SIZE + (3,)), # MobileNet specific preprocessing
+    layers.Rescaling(1./127.5, offset=-1, input_shape=IMG_SIZE + (3,)),
     base_model,
     layers.GlobalAveragePooling2D(),
     layers.Dropout(0.2),
-    layers.Dense(len(class_names), activation='softmax') # Final output layer
+    layers.Dense(len(class_names), activation='softmax')
 ])
 
-# 4. COMPILE
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-# 5. TRAIN
 print("⏳ Training...")
 history = model.fit(
     train_ds,
