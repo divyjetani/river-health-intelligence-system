@@ -1,111 +1,196 @@
-import { MapPin, Navigation } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from "react";
+import { GoogleMap, LoadScript, HeatmapLayer, InfoWindow } from "@react-google-maps/api";
+import { Play, Pause } from 'lucide-react';
+
+// Map Configuration
+const mapContainerStyle = {
+  width: "100%",
+  height: "100%",
+  minHeight: "600px",
+};
+
+const center = { lat: 22.2587, lng: 71.1924 }; // Center of Gujarat
+
+// Pollution timeline data
+const pollutionTimeline = [
+  {
+    label: "Normal Day",
+    data: [
+      { lat: 23.0225, lng: 72.5714, weight: 3, river: "Sabarmati", type: "Minor waste", score: 70 },
+      { lat: 21.7051, lng: 72.9959, weight: 2, river: "Narmada", type: "Clean", score: 85 }
+    ]
+  },
+  {
+    label: "After Rainfall",
+    data: [
+      { lat: 23.0225, lng: 72.5714, weight: 6, river: "Sabarmati", type: "Sewage overflow", score: 50 },
+      { lat: 21.1702, lng: 72.8311, weight: 5, river: "Tapi", type: "Industrial discharge", score: 55 }
+    ]
+  },
+  {
+    label: "Peak Pollution",
+    data: [
+      { lat: 23.0225, lng: 72.5714, weight: 9, river: "Sabarmati", type: "Toxic foam", score: 30 },
+      { lat: 22.3072, lng: 73.1812, weight: 8, river: "Vishwamitri", type: "Algae bloom", score: 35 }
+    ]
+  }
+];
 
 export default function PollutionMap() {
-  const zones = [
-    { id: 1, name: 'Zone A - Industrial Area', status: 'critical', x: 25, y: 30, intensity: 95 },
-    { id: 2, name: 'Zone B - Residential', status: 'moderate', x: 60, y: 45, intensity: 58 },
-    { id: 3, name: 'Zone C - Agricultural', status: 'clean', x: 80, y: 65, intensity: 22 },
-    { id: 4, name: 'Zone D - Urban Center', status: 'critical', x: 45, y: 70, intensity: 88 },
-    { id: 5, name: 'Zone E - Forest Reserve', status: 'clean', x: 70, y: 25, intensity: 15 },
-  ];
+  const [timeIndex, setTimeIndex] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(false);
+  const [heatmapData, setHeatmapData] = useState([]);
+  const [mapLoaded, setMapLoaded] = useState(false); // Track if map is ready
+  
+  const mapRef = useRef(null);
 
-  const getZoneColor = (status) => {
-    switch (status) {
-      case 'critical':
-        return 'bg-red-500';
-      case 'moderate':
-        return 'bg-amber-500';
-      default:
-        return 'bg-green-500';
+  // Auto-play timeline
+  useEffect(() => {
+    if (!autoPlay) return;
+    const interval = setInterval(() => {
+      setTimeIndex((prev) =>
+        prev === pollutionTimeline.length - 1 ? 0 : prev + 1
+      );
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [autoPlay]);
+
+  // Convert points ONLY AFTER google maps loads
+  const handleMapLoad = (map) => {
+    mapRef.current = map;
+    setMapLoaded(true); // Set true so we can render InfoWindows safely
+    updateHeatmapData();
+  };
+
+  const updateHeatmapData = () => {
+    if (window.google) {
+      const converted = pollutionTimeline[timeIndex].data.map((p) => ({
+        location: new window.google.maps.LatLng(p.lat, p.lng),
+        weight: p.weight,
+        meta: p 
+      }));
+      setHeatmapData(converted);
     }
   };
 
+  // Update heatmap when timeline changes
+  useEffect(() => {
+    if (mapLoaded) {
+      updateHeatmapData();
+    }
+  }, [timeIndex, mapLoaded]);
+
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-900">Heat Map</h2>
-        <Link to="/dashboard/geographicmap">
-        <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium">
-          <Navigation className="w-4 h-4" />
-          <span>Full Map View</span>
-        </button>
-        </Link>
+    <div className="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden h-full flex flex-col">
+      {/* Header with Timeline Controls */}
+      <div className="p-4 border-b border-slate-100 flex flex-wrap justify-between items-center bg-slate-50 gap-4">
+        
+        <div className="flex items-center space-x-2">
+          <h2 className="text-lg font-bold text-slate-900">River Pollution Heatmap</h2>
+          <span className="text-xs font-medium bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
+            Live Feed
+          </span>
+        </div>
+
+        <div className="flex items-center space-x-3">
+          <div className="text-sm font-semibold text-slate-700 bg-slate-200 px-3 py-1.5 rounded-lg">
+            {pollutionTimeline[timeIndex].label}
+          </div>
+
+          <button
+            onClick={() => setAutoPlay(!autoPlay)}
+            className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              autoPlay 
+                ? 'bg-red-100 text-red-700 hover:bg-red-200' 
+                : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+            }`}
+          >
+            {autoPlay ? (
+              <>
+                <Pause className="w-3 h-3" />
+                <span>Pause</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-3 h-3" />
+                <span>Play Timeline</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
-      <div className="relative bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl h-96 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path
-              d="M 0,50 Q 25,30 50,50 T 100,50 L 100,100 L 0,100 Z"
-              fill="currentColor"
-              className="text-blue-400"
-            />
-          </svg>
-        </div>
-
-        {zones.map((zone) => (
-          <div
-            key={zone.id}
-            className="absolute group cursor-pointer"
-            style={{ left: `${zone.x}%`, top: `${zone.y}%`, transform: 'translate(-50%, -50%)' }}
+      {/* Google Map Container */}
+      <div className="flex-1 w-full relative min-h-[500px]">
+        <LoadScript
+          googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+          libraries={["visualization"]}
+        >
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={center}
+            zoom={7}
+            onLoad={handleMapLoad}
+            options={{
+              streetViewControl: false,
+              mapTypeControl: false,
+              fullscreenControl: false,
+              styles: [
+                {
+                  featureType: "water",
+                  elementType: "geometry",
+                  stylers: [{ color: "#e9e9e9" }, { lightness: 17 }]
+                },
+                {
+                  featureType: "landscape",
+                  elementType: "geometry",
+                  stylers: [{ color: "#f5f5f5" }, { lightness: 20 }]
+                }
+              ]
+            }}
           >
-            <div className="relative">
-              <div className={`${getZoneColor(zone.status)} w-6 h-6 rounded-full animate-ping absolute`} />
-              <div className={`${getZoneColor(zone.status)} w-6 h-6 rounded-full border-4 border-white shadow-lg relative z-10`} />
-            </div>
+            {/* 1. HEATMAP LAYER */}
+            {heatmapData.length > 0 && (
+              <HeatmapLayer
+                data={heatmapData}
+                options={{
+                  radius: 40,
+                  opacity: 0.8,
+                }}
+              />
+            )}
 
-            <div className="absolute left-1/2 -translate-x-1/2 mt-2 hidden group-hover:block z-20">
-              <div className="bg-white rounded-lg shadow-xl p-4 w-48 border border-slate-200">
-                <div className="flex items-start justify-between mb-2">
-                  <MapPin className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
-                  <span className={`text-xs font-semibold px-2 py-1 rounded ${
-                    zone.status === 'critical' ? 'bg-red-100 text-red-700' :
-                    zone.status === 'moderate' ? 'bg-amber-100 text-amber-700' :
-                    'bg-green-100 text-green-700'
-                  }`}>
-                    {zone.status.toUpperCase()}
-                  </span>
-                </div>
-                <h4 className="font-semibold text-slate-900 mb-2">{zone.name}</h4>
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-slate-600">Pollution Index:</span>
-                    <span className="font-semibold">{zone.intensity}/100</span>
+            {/* 2. INFO WINDOWS (MARKERS) - FIXED ERROR HERE */}
+            {mapLoaded && pollutionTimeline[timeIndex].data.map((p, idx) => (
+                <InfoWindow
+                  key={idx}
+                  position={{ lat: p.lat, lng: p.lng }}
+                  options={{
+                    // Safe check: Only create Size if window.google exists
+                    pixelOffset: window.google 
+                      ? new window.google.maps.Size(0, -10) 
+                      : undefined,
+                    disableAutoPan: true
+                  }}
+                >
+                  <div className="p-1 min-w-[150px]">
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">{p.river} River</h4>
+                    <div className="space-y-1">
+                        <p className="text-xs text-slate-600">
+                            <span className="font-semibold">Pollution:</span> {p.type}
+                        </p>
+                        <div className="flex items-center justify-between text-xs">
+                            <span className="text-slate-600">Health Score:</span>
+                            <span className={`font-bold ${p.score < 50 ? 'text-red-600' : 'text-green-600'}`}>
+                                {p.score}/100
+                            </span>
+                        </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-1.5">
-                    <div
-                      className={`h-1.5 rounded-full ${
-                        zone.status === 'critical' ? 'bg-red-500' :
-                        zone.status === 'moderate' ? 'bg-amber-500' :
-                        'bg-green-500'
-                      }`}
-                      style={{ width: `${zone.intensity}%` }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg p-4">
-          <h4 className="font-semibold text-slate-900 mb-3">Legend</h4>
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full" />
-              <span className="text-sm text-slate-700">Clean Zone (0-30)</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-amber-500 rounded-full" />
-              <span className="text-sm text-slate-700">Moderate (31-70)</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full" />
-              <span className="text-sm text-slate-700">Critical (71-100)</span>
-            </div>
-          </div>
-        </div>
+                </InfoWindow>
+            ))}
+          </GoogleMap>
+        </LoadScript>
       </div>
     </div>
   );

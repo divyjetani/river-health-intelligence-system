@@ -1,113 +1,73 @@
-import { TrendingDown, Droplets, AlertTriangle, Wind } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 
 export default function HealthScore() {
-  const score = 42;
-  const previousScore = 58;
-  const change = score - previousScore;
-
-  const getScoreColor = (score) => {
-    if (score >= 70) return 'text-green-600';
-    if (score >= 40) return 'text-amber-600';
-    return 'text-red-600';
-  };
-
-  const getScoreGradient = (score) => {
-    if (score >= 70) return 'from-green-500 to-emerald-500';
-    if (score >= 40) return 'from-amber-500 to-orange-500';
-    return 'from-red-500 to-rose-500';
-  };
+  const score = 42; // Example score from your design
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-slate-900">River Health Score</h2>
-        {/* <div className="flex items-center space-x-2 text-sm">
-          {change < 0 ? (
-            <span className="text-red-600 font-semibold flex items-center">
-              <TrendingDown className="w-4 h-4 mr-1" />
-              {Math.abs(change)} points
-            </span>
-          ) : (
-            <span className="text-green-600 font-semibold">+{change} points</span>
-          )}
-        </div> */}
+    <div className="relative w-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg overflow-hidden mb-6">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+        </svg>
       </div>
 
-      <div className="flex items-center justify-center mb-8">
-        <div className="relative">
-          <svg className="w-48 h-48 transform -rotate-90">
-            <circle
-              cx="96"
-              cy="96"
-              r="88"
-              stroke="currentColor"
-              strokeWidth="12"
-              fill="none"
-              className="text-slate-200"
-            />
-            <circle
-              cx="96"
-              cy="96"
-              r="88"
-              stroke="url(#gradient)"
-              strokeWidth="12"
-              fill="none"
-              strokeDasharray={`${(score / 100) * 553} 553`}
-              strokeLinecap="round"
-              className="transition-all duration-1000"
-            />
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" className={`${getScoreGradient(score).split(' ')[0].replace('from-', 'text-')}`} stopColor="currentColor" />
-                <stop offset="100%" className={`${getScoreGradient(score).split(' ')[1].replace('to-', 'text-')}`} stopColor="currentColor" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className={`text-5xl font-bold ${getScoreColor(score)}`}>{score}</div>
-              <div className="text-sm text-slate-500 mt-1">/ 100</div>
+      <div className="max-w-[1600px] mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between relative z-10">
+        
+        {/* Left Side: Title & Warnings */}
+        <div className="flex items-center space-x-4 mb-4 sm:mb-0">
+          <div className="bg-yellow-400 p-2 rounded-lg shadow-md">
+            <AlertTriangle className="text-yellow-900 w-8 h-8" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-white tracking-wide">River Score</h1>
+            <div className="flex space-x-4 text-blue-100 text-sm font-medium mt-1">
+              <span className="flex items-center">
+                <span className="w-2 h-2 bg-cyan-300 rounded-full mr-2"></span>
+                High plastic waste
+              </span>
+              <span className="hidden md:flex items-center">
+                <span className="w-2 h-2 bg-yellow-300 rounded-full mr-2"></span>
+                Toxic foam detected
+              </span>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-blue-50 rounded-xl p-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <Droplets className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-medium text-slate-700">Water Color</span>
+        {/* Right Side: The Score Gauge */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 flex items-center space-x-4">
+          <div className="relative w-24 h-24 flex items-center justify-center">
+            {/* Simple CSS Circle Gauge */}
+            <svg className="w-full h-full transform -rotate-90">
+              <circle
+                cx="48"
+                cy="48"
+                r="40"
+                stroke="currentColor"
+                strokeWidth="8"
+                fill="transparent"
+                className="text-white/20"
+              />
+              <circle
+                cx="48"
+                cy="48"
+                r="40"
+                stroke="white"
+                strokeWidth="8"
+                fill="transparent"
+                strokeDasharray={251.2}
+                strokeDashoffset={251.2 - (251.2 * score) / 100}
+                strokeLinecap="round"
+                className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+              />
+            </svg>
+            <div className="absolute flex flex-col items-center">
+              <span className="text-3xl font-bold text-white">{score}</span>
+              <span className="text-[10px] text-blue-100">/ 100</span>
+            </div>
           </div>
-          <div className="text-2xl font-bold text-slate-900">Fair</div>
-          <div className="text-xs text-slate-500 mt-1">Dark green detected</div>
         </div>
 
-        <div className="bg-red-50 rounded-xl p-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <AlertTriangle className="w-5 h-5 text-red-600" />
-            <span className="text-sm font-medium text-slate-700">Pollution</span>
-          </div>
-          <div className="text-2xl font-bold text-slate-900">High</div>
-          <div className="text-xs text-slate-500 mt-1">87 objects detected</div>
-        </div>
-
-        <div className="bg-amber-50 rounded-xl p-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <Wind className="w-5 h-5 text-amber-600" />
-            <span className="text-sm font-medium text-slate-700">Foam Level</span>
-          </div>
-          <div className="text-2xl font-bold text-slate-900">Medium</div>
-          <div className="text-xs text-slate-500 mt-1">3 zones affected</div>
-        </div>
-
-        <div className="bg-green-50 rounded-xl p-4">
-          <div className="flex items-center space-x-2 mb-2">
-            <Droplets className="w-5 h-5 text-green-600" />
-            <span className="text-sm font-medium text-slate-700">Flow Rate</span>
-          </div>
-          <div className="text-2xl font-bold text-slate-900">Normal</div>
-          <div className="text-xs text-slate-500 mt-1">2.3 m/s average</div>
-        </div>
       </div>
     </div>
   );

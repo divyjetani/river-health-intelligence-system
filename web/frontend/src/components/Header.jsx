@@ -34,6 +34,14 @@ export default function Header() {
             <NavLink to="/login" className={({ isActive }) => linkClass(isActive)}>
               Login
             </NavLink>
+
+            <NavLink to={'/map'} className={({ isActive }) => linkClass(isActive)}>
+              Map
+            </NavLink>
+
+            <NavLink to={'/dashboard2'} className={({ isActive }) => linkClass(isActive)}>
+              dashboard2
+            </NavLink>
           </nav>
         </div>
       </div>

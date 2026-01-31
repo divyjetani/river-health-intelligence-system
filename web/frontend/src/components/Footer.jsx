@@ -49,10 +49,8 @@ export default function Footer() {
             <h4 className="font-bold text-slate-900 mb-4">Team</h4>
             <ul className="space-y-2 text-sm text-slate-600">
               <li><a href="#" className="hover:text-blue-600 transition-colors">Divy</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Krishna</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Jenil</a></li>
               <li><a href="#" className="hover:text-blue-600 transition-colors">Tvisha</a></li>
-              <li><a href="#" className="hover:text-blue-600 transition-colors">Divyanshu</a></li>
             </ul>
           </div>
         </div>

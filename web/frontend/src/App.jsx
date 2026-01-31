@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import GeographicMap from './pages/GeographicMap';
+import MapPage from './pages/MapPage';
+import RiverMonitoringDashboard from './pages/RiverMonitoringDashboard';
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard/geographicmap" element={<GeographicMap />} />
+            <Route path='/map' element={<MapPage />} />
+            <Route path='/dashboard2' element={<RiverMonitoringDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
